@@ -9,7 +9,7 @@
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'wordsmith-sdk'
+gem 'wordsmith-ruby-sdk'
 ```
 
 And then execute:
