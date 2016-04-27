@@ -1,6 +1,9 @@
-[![Code Climate](https://codeclimate.com/repos/5720c4b8e7b46b37e1002bfe/badges/3c997ae42848b5faf8ad/gpa.svg)](https://codeclimate.com/repos/5720c4b8e7b46b37e1002bfe/feed)
-[![Test Coverage](https://codeclimate.com/repos/5720c4b8e7b46b37e1002bfe/badges/3c997ae42848b5faf8ad/coverage.svg)](https://codeclimate.com/repos/5720c4b8e7b46b37e1002bfe/coverage)
-[![Issue Count](https://codeclimate.com/repos/5720c4b8e7b46b37e1002bfe/badges/3c997ae42848b5faf8ad/issue_count.svg)](https://codeclimate.com/repos/5720c4b8e7b46b37e1002bfe/feed)
+[![Code
+Climate](https://codeclimate.com/github/AutomatedInsightsInc/wordsmith-ruby-sdk/badges/gpa.svg)](https://codeclimate.com/github/AutomatedInsightsInc/wordsmith-ruby-sdk)
+[![Test
+Coverage](https://codeclimate.com/github/AutomatedInsightsInc/wordsmith-ruby-sdk/badges/coverage.svg)](https://codeclimate.com/github/AutomatedInsightsInc/wordsmith-ruby-sdk/coverage)
+[![Issue
+Count](https://codeclimate.com/github/AutomatedInsightsInc/wordsmith-ruby-sdk/badges/issue_count.svg)](https://codeclimate.com/github/AutomatedInsightsInc/wordsmith-ruby-sdk)
 
 # Wordsmith SDK for Ruby
 ## Intro to Wordsmith

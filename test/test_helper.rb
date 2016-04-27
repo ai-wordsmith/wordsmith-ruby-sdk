@@ -8,7 +8,7 @@ if ENV['CODECLIMATE_REPO_TOKEN']
   CodeClimate::TestReporter.start
 end
 
-require 'wordsmith-sdk'
+require 'wordsmith-ruby-sdk'
 require 'minitest/autorun'
 require 'minitest/unit'
 require 'minitest/pride'
