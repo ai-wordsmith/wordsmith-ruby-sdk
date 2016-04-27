@@ -1,4 +1,6 @@
-
+[![Code Climate](https://codeclimate.com/repos/5720c4b8e7b46b37e1002bfe/badges/3c997ae42848b5faf8ad/gpa.svg)](https://codeclimate.com/repos/5720c4b8e7b46b37e1002bfe/feed)
+[![Test Coverage](https://codeclimate.com/repos/5720c4b8e7b46b37e1002bfe/badges/3c997ae42848b5faf8ad/coverage.svg)](https://codeclimate.com/repos/5720c4b8e7b46b37e1002bfe/coverage)
+[![Issue Count](https://codeclimate.com/repos/5720c4b8e7b46b37e1002bfe/badges/3c997ae42848b5faf8ad/issue_count.svg)](https://codeclimate.com/repos/5720c4b8e7b46b37e1002bfe/feed)
 
 # Wordsmith SDK for Ruby
 
