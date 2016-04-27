@@ -1,0 +1,6 @@
+require 'wordsmith/version'
+require 'wordsmith/project'
+require 'wordsmith/template'
+require 'wordsmith/template_collection'
+require 'wordsmith/configuration'
+require 'wordsmith/client'
