@@ -24,7 +24,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "minitest", "~> 5.8"
   spec.add_development_dependency "dotenv", "~> 2.1"
-  spec.add_development_dependency "codeclimate-test-reporter"
+  spec.add_development_dependency "codeclimate-test-reporter", "~> 0"
 
   spec.add_dependency 'faraday', '~> 0.9'
   spec.add_dependency 'hashie', '~> 3.4'
