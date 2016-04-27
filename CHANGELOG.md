@@ -3,7 +3,7 @@ All notable changes to this project will be documented in this file. This projec
 
 ## [Unreleased](https://github.com/automatedinsightsinc/wordsmith-ruby-sdk/compare/v1.0.1...HEAD)
 
-## [1.0.1](https://github.com/AutomatedInsightsInc/wordsmith-sdk/tree/v1.0.1) - 2016-04-27
+## [1.0.1](https://github.com/AutomatedInsightsInc/wordsmith-ruby-sdk/tree/v1.0.1) - 2016-04-27
 ##### Added
 - Codeclimate test coverage reporter with dotenv for codeclimate token.
 - Required ruby version in gemspec.
