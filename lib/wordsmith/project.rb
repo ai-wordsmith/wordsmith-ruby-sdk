@@ -1,5 +1,5 @@
 class Wordsmith::Project
-  attr_reader :name, :slug, :templates
+  attr_reader :name, :slug, :schema, :templates
 
   def self.all
     projects_attributes = Wordsmith.client.get 'projects'
@@ -11,20 +11,13 @@ class Wordsmith::Project
     project or fail %Q(Project not found with slug: "#{slug}")
   end
 
-  def schema
-    @_schema ||=
-      begin
-        body = Wordsmith.client.get "projects/#{slug}"
-        body[:schema]
-      end
-  end
-
   private
 
-  def initialize(name: nil, slug: nil, templates: nil)
-    raise "Missing required kword arguments" unless [name, slug, templates].all?
+  def initialize(name: nil, slug: nil, schema: nil, templates: nil, **attributes)
+    raise "Missing required keyword arguments" unless [name, slug, templates].all?
     @name = name
     @slug = slug
+    @schema = schema
     @templates = Wordsmith::TemplateCollection.new(
       templates.map {|t| Wordsmith::Template.new project: self, **t})
   end
