@@ -1,7 +1,7 @@
 class Wordsmith::Template
   attr_reader :name, :slug, :project
 
-  def initialize(name: nil, slug: nil, project: nil)
+  def initialize(name: nil, slug: nil, project: nil, **attributes)
     raise "Missing required kword arguments" unless [name, slug, project].all?
     @name = name
     @slug = slug
