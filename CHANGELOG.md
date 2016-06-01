@@ -1,9 +1,14 @@
 # Change Log
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased](https://github.com/automatedinsightsinc/wordsmith-ruby-sdk/compare/v1.0.1...HEAD)
+## [Unreleased](https://github.com/automatedinsightsinc/wordsmith-ruby-sdk/compare/v1.0.3...HEAD)
 
-## [1.0.2](https://github.com/AutomatedInsightsInc/wordsmith-ruby-sdk/tree/v1.0.1) - 2016-04-27
+## [1.0.3](https://github.com/automatedinsightsinc/wordsmith-ruby-sdk/compare/v1.0.2...v1.0.3)
+##### Changed
+- Updated for API v1.1
+- Fix to handle additional fields returned by the API.
+
+## [1.0.2](https://github.com/AutomatedInsightsInc/wordsmith-ruby-sdk/tree/v1.0.2) - 2016-04-27
 ##### Added
 - Codeclimate test coverage reporter with dotenv for codeclimate token.
 - Required ruby version in gemspec.
