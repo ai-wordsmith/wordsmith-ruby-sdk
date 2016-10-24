@@ -45,6 +45,8 @@ module Wordsmith
         fail %Q(Bad Request: "#{body[:error]}")
       when 401
         fail 'API authorization error'
+      when 429
+        fail body[:error]
       else
         fail 'API error'
       end
