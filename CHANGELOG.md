@@ -1,7 +1,11 @@
 # Change Log
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased](https://github.com/automatedinsightsinc/wordsmith-ruby-sdk/compare/v1.0.3...HEAD)
+## [Unreleased](https://github.com/automatedinsightsinc/wordsmith-ruby-sdk/compare/v1.0.4...HEAD)
+
+## [1.0.4](https://github.com/automatedinsightsinc/wordsmith-ruby-sdk/compare/v1.0.3...v1.0.4)
+##### Added
+- Handled HTTP 429
 
 ## [1.0.3](https://github.com/automatedinsightsinc/wordsmith-ruby-sdk/compare/v1.0.2...v1.0.3)
 ##### Changed
