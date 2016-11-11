@@ -42,7 +42,7 @@ module Wordsmith
       when 200, 201
         return body[:data]
       when 400
-        fail %Q(Bad Request: "#{body[:error]}")
+        fail %Q(Bad Request: "#{body[:errors]}")
       when 401
         fail 'API authorization error'
       when 429
