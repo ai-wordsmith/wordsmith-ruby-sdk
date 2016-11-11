@@ -1,8 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased](https://github.com/automatedinsightsinc/wordsmith-ruby-sdk/compare/v1.0.4...HEAD)
+## [Unreleased](https://github.com/automatedinsightsinc/wordsmith-ruby-sdk/compare/v1.0.5...HEAD)
 
+##### Changed
 ## [1.0.5](https://github.com/automatedinsightsinc/wordsmith-ruby-sdk/compare/v1.0.4...v1.0.5)
 ##### Changed
 - Return :errors from Wordsmith when HTTP response code is 400 
@@ -20,8 +21,6 @@ All notable changes to this project will be documented in this file. This projec
 ##### Added
 - Codeclimate test coverage reporter with dotenv for codeclimate token.
 - Required ruby version in gemspec.
-
-##### Changed
 - Gem version number bumped (missed bump in 1.0.0 release)
 
 ## 1.0.0 - 2015-03-30
