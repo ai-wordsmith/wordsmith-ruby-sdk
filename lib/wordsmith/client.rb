@@ -6,13 +6,12 @@ module Wordsmith
   class Client
 
     def get(uri)
-      response = connection.get uri
-      parse_response response
+      parse_response(connection.get(uri))
     end
 
     def post(uri, data)
       response = connection.post uri, {data: data}.to_json
-      parse_response response
+      parse_response(response)
     end
 
     private
@@ -37,18 +36,14 @@ module Wordsmith
 
     def parse_response(response)
       body = JSON.parse(response.body)
-      Hashie.symbolize_keys! body
+      Hashie.symbolize_keys!(body)
       case response.status
-      when 200, 201
-        return body[:data]
-      when 400
-        fail %Q(Bad Request: "#{body[:errors]}")
-      when 401
-        fail 'API authorization error'
-      when 429
-        fail body[:error]
-      else
-        fail 'API error'
+      when 200, 201 then body[:data]
+      when 400 then fail %Q(Bad Request: "#{body[:errors]}")
+      when 401 then fail 'API authorization error.'
+      when 404 then fail 'Incorrect url set in wordsmith.rb'
+      when 429 then fail body[:error]
+      else fail 'API error'
       end
     end
   end
