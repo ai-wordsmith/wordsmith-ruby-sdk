@@ -21,7 +21,7 @@ module Wordsmith
       @schema = schema
       @templates =
         Wordsmith::TemplateCollection.new(
-          templates.map { |t| Wordsmith::Template.new project: self, **t }
+          templates.map { |t| Wordsmith::Template.new(project: self, **t) }
         )
     end
   end
