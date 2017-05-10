@@ -6,7 +6,7 @@ module Wordsmith
   class Client
 
     def get(uri)
-      response = onnection.get(uri)
+      response = connection.get(uri)
       parse_response(response)
     end
 

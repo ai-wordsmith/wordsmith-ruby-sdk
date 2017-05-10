@@ -6,7 +6,7 @@ class Wordsmith::TemplateCollection
 
   def find(slug)
     template = @templates.find {|t| t.slug == slug }
-    template || fail %Q(Template not found with slug: "#{slug}")
+    template or fail %Q(Template not found with slug: "#{slug}")
   end
 
   def all
