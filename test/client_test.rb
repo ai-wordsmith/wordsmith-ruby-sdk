@@ -26,29 +26,24 @@ class ClientTest < Minitest::Test
 
   def test_authorization
     Wordsmith.configure { |config| config.token = 'some_other_token' }
-    begin
-      Wordsmith.client.get('projects')
-    rescue RuntimeError => e
-      assert_equal 'API authorization error.', e.message
-      return
-    end
 
-    fail 'Did not catch error'
+    assert_equal 'API authorization error.', bad_request_message
   end
 
   def test_incorrect_url
     Wordsmith.configure { |config| config.version = '1.99999' }
-    begin
-      Wordsmith.client.get('projects')
-    rescue RuntimeError => e
-      assert_equal 'Incorrect url set in wordsmith.rb', e.message
-      return
-    end
 
-    fail 'Did not catch error'
+    assert_equal 'Incorrect url set in wordsmith.rb', bad_request_message
   end
 
   private
+
+  def bad_request_message
+    Wordsmith.client.get('projects')
+    fail 'Did not catch error'
+  rescue RuntimeError => e
+    return e.message
+  end
 
   def connection
     Wordsmith.client.send :connection
