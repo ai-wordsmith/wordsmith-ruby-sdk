@@ -19,11 +19,18 @@ module Wordsmith
 
     def connection
       return @_connection if connection_valid?
-      @_connection = Faraday.new(url: Wordsmith.configuration.url, headers: {
-        'Content-Type' => 'application/json',
-        'Authorization' => "Bearer #{Wordsmith.configuration.token}",
-        'User-Agent' => Wordsmith.configuration.user_agent
-      })
+      @_connection = initialize_connection
+    end
+
+    def initialize_connection
+      Faraday.new(
+        url: Wordsmith.configuration.url,
+        headers: {
+          'Content-Type' => 'application/json',
+          'Authorization' => "Bearer #{Wordsmith.configuration.token}",
+          'User-Agent' => Wordsmith.configuration.user_agent
+        }
+      )
     end
 
     def connection_valid?
@@ -31,8 +38,11 @@ module Wordsmith
       url = @_connection.url_prefix.to_s
       authorization = @_connection.headers['Authorization']
 
-      url == Wordsmith.configuration.url &&
-        authorization == "Bearer #{Wordsmith.configuration.token}"
+      url == Wordsmith.configuration.url && valid_token?(authorization)
+    end
+
+    def valid_token?(authorization)
+      authorization == "Bearer #{Wordsmith.configuration.token}"
     end
 
     def parse_response(response)
