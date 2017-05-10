@@ -38,18 +38,18 @@ class ClientTest < Minitest::Test
 
   private
 
-  def bad_request_message
-    Wordsmith.client.get('projects')
-    fail 'Did not catch error'
-  rescue RuntimeError => e
-    return e.message
-  end
-
   def connection
     Wordsmith.client.send :connection
   end
 
   def authorization
     connection.headers['Authorization']
+  end
+
+  def bad_request_message
+    Wordsmith.client.get('projects')
+    fail 'Did not catch error'
+  rescue RuntimeError => e
+    return e.message
   end
 end
