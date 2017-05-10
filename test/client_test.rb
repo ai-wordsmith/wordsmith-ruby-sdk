@@ -33,7 +33,7 @@ class ClientTest < Minitest::Test
   def test_incorrect_url
     Wordsmith.configure { |config| config.version = '1.99999' }
 
-    assert_equal 'Incorrect url set in wordsmith.rb', bad_request_message
+    assert_equal 'Incorrect version set in wordsmith.rb', bad_request_message
   end
 
   private
