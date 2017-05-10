@@ -43,16 +43,14 @@ class ClientTest::ConnectionTest < Minitest::Test
 
   def test_token_configuration_change
     connection = Wordsmith.client.send :connection
-    assert_equal 'Bearer some_token',
-      connection.headers['Authorization']
+    assert_equal 'Bearer some_token', connection.headers['Authorization']
 
     Wordsmith.configure do |config|
       config.token = 'some_other_token'
     end
 
     connection = Wordsmith.client.send :connection
-    assert_equal 'Bearer some_other_token',
-      connection.headers['Authorization']
+    assert_equal 'Bearer some_other_token', connection.headers['Authorization']
   end
 
   def test_content_type_header_is_json

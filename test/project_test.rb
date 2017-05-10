@@ -32,12 +32,12 @@ class ProjectTest < Minitest::Test
 
   def test_schema
     project = Wordsmith::Project.find 'test'
-    expected = {a: 'Number', b: 'Number', c: 'Number'}
+    expected = { a: 'Number', b: 'Number', c: 'Number' }
     assert_equal expected, project.schema
   end
 
   def test_template_collection_exists
-    project = Wordsmith::Project.find 'test'
+    project = Wordsmith::Project.find('test')
     assert_instance_of Wordsmith::TemplateCollection, project.templates
   end
 end

@@ -12,3 +12,7 @@ require 'wordsmith-ruby-sdk'
 require 'minitest/autorun'
 require 'minitest/unit'
 require 'minitest/pride'
+
+class Minitest::Test
+
+end
