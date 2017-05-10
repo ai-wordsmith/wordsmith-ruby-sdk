@@ -51,7 +51,7 @@ project = Wordsmith::Project.find('project-slug') #fetch a project by slug
 project.schema     #the data schema for the project
 project.templates  #a collection of templates for this project
 
-template = project.templates.find('template-slug')           #fetch a template by slug
+template = project.templates.find('template-slug')                             #fetch a template by slug
 template.generate({a_data_point: 1, another_one: 'Tuesday'}, proofread: false) #generate content
  > {content: 'Your content is here!'}
 ```
