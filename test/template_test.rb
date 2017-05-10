@@ -9,10 +9,6 @@ class TemplateTest < Minitest::Test
     @template = templates.find('test')
   end
 
-  def teardown
-    Wordsmith.reset
-  end
-
   def test_generate_invalid
     err = assert_raises RuntimeError do
       @template.generate({})
