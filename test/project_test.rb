@@ -7,10 +7,6 @@ class ProjectTest < Minitest::Test
     end
   end
 
-  def teardown
-    Wordsmith.reset
-  end
-
   def test_all_contains_project
     list = Wordsmith::Project.all
     assert list.find {|p| p.slug == 'test'}

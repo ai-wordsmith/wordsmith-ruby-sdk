@@ -22,11 +22,6 @@ class ClientTest::ConnectionTest < Minitest::Test
     super
   end
 
-  def teardown
-    Wordsmith.reset
-    super
-  end
-
   def test_url_configuration_change
     connection = Wordsmith.client.send :connection
     assert_equal 'http://www.some-url.com/api',

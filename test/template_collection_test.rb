@@ -8,10 +8,6 @@ class TemplateCollectionTest < Minitest::Test
     @templates = Wordsmith::Project.find('test').templates
   end
 
-  def teardown
-    Wordsmith.reset
-  end
-
   def test_raises_if_not_found
     err = assert_raises RuntimeError do
       @templates.find 'test-sdk-nonexistent-template'

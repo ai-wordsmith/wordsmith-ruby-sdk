@@ -18,10 +18,6 @@ class WordsmithTest::ConfigureTest < Minitest::Test
     end
   end
 
-  def teardown
-    Wordsmith.reset
-  end
-
   def test_reset_configuration
     Wordsmith.reset
     config = Wordsmith.configuration

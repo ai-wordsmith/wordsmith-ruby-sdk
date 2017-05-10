@@ -14,5 +14,7 @@ require 'minitest/unit'
 require 'minitest/pride'
 
 class Minitest::Test
-
+  def teardown
+    Wordsmith.reset
+  end
 end
