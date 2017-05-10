@@ -1,12 +1,6 @@
 require 'test_helper'
 
 class ProjectTest < Minitest::Test
-  def setup
-    Wordsmith.configure do |config|
-      config.token = WORDSMITH_SDK_TEST_TOKEN
-    end
-  end
-
   def test_all_contains_project
     list = Wordsmith::Project.all
     assert list.find {|p| p.slug == 'test'}

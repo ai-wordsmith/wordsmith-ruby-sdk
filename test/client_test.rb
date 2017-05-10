@@ -19,7 +19,6 @@ class ClientTest::ConnectionTest < Minitest::Test
       config.token = 'some_token'
       config.url = 'http://www.some-url.com/api'
     end
-    super
   end
 
   def test_url_configuration_change
