@@ -11,13 +11,6 @@ class WordsmithTest < Minitest::Test
 end
 
 class WordsmithTest::ConfigureTest < Minitest::Test
-  def setup
-    Wordsmith.configure do |config|
-      config.token = 'some_token'
-      config.url = 'some_url'
-    end
-  end
-
   def test_reset_configuration
     Wordsmith.reset
     config = Wordsmith.configuration

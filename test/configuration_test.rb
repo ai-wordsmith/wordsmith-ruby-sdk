@@ -16,9 +16,9 @@ class ConfigurationTest < Minitest::Test
     assert_equal 'https://api.automatedinsights.com/v1', config.url
   end
 
-  def test_set_url_value
+  def test_set_version_value
     config = Wordsmith::Configuration.new
-    config.url = 'some_url'
-    assert_equal 'some_url', config.url
+    config.version = 'some_version'
+    assert_equal 'some_version', config.version
   end
 end

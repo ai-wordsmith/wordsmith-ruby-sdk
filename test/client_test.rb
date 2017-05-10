@@ -12,11 +12,11 @@ class ClientTest < Minitest::Test
   def test_configuration_change
     Wordsmith.configure do |config|
       config.token = 'some_other_token'
-      config.url = 'http://www.some-other-url.com/api'
+      config.version = '666'
     end
 
     assert_equal 'Bearer some_other_token', authorization
-    assert_equal 'http://www.some-other-url.com/api', connection.url_prefix.to_s
+    assert_equal "#{Wordsmith::Configuration::URL_HOST}/v666", connection.url_prefix.to_s
   end
 
   def test_content_type_header_is_json
@@ -33,7 +33,19 @@ class ClientTest < Minitest::Test
       return
     end
 
-    fail 'Did not catch authorization error'
+    fail 'Did not catch error'
+  end
+
+  def test_incorrect_url
+    Wordsmith.configure { |config| config.version = '1.99999' }
+    begin
+      Wordsmith.client.get('projects')
+    rescue RuntimeError => e
+      assert_equal 'Incorrect url set in wordsmith.rb', e.message
+      return
+    end
+
+    fail 'Did not catch error'
   end
 
   private
