@@ -8,8 +8,6 @@
 - A page affected
 - A library affected
 
-#### Screenshots
-
 #### How should PR reviewers test this?
 - Unit tests:
   - `rake` (...OR replace with specific test files to run)
