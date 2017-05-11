@@ -8,11 +8,13 @@ class TemplateTest < Minitest::Test
   end
 
   def test_generate_invalid
-    err = assert_raises RuntimeError do
-      @template.generate({})
-    end
+    ['test', 'generate'].each do |endpoint|
+      err = assert_raises RuntimeError do
+        @template.send(endpoint, {} )
+      end
 
-    assert_match(/^Bad Request/, err.message)
+      assert_match(/^Bad Request/, err.message)
+    end
   end
 
   def test_generate
@@ -22,7 +24,8 @@ class TemplateTest < Minitest::Test
     refute_nil output[:proofread_results]
   end
 
-  def test_test_generate # ¯\_(ツ)_/¯
+  def test_generate_test
     output = @template.test({ a: 1, b: 1, c: 1 })
+    assert_nil output
   end
 end
