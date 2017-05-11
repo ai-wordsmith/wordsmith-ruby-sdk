@@ -10,19 +10,17 @@ module Wordsmith
     end
 
     def generate(data, proofread: false)
-      send_to_wordsmith(data, proofread: proofread, endpoint: 'outputs')
-      Wordsmith.client.post("projects/#{project.slug}/templates/#{slug}/outputs", data, proofread)
+      Wordsmith.client.post(path('outputs'), data, proofread)
     end
 
-    def test(data)
-      send_to_wordsmith(data, endpoint: 'test')
-      Wordsmith.client.post("projects/#{project.slug}/templates/#{slug}/test", data)
+    def test(data, proofread: false)
+      Wordsmith.client.post(path('test'), data, proofread)
     end
 
     private
 
-    def send_to_wordsmith(data, proofread:, endpoint:)
-      Wordsmith.client.post("projects/#{project.slug}/templates/#{slug}/#{endpoint}", data, proofread)
+    def path(endpoint)
+      "projects/#{project.slug}/templates/#{slug}/#{endpoint}"
     end
   end
 end

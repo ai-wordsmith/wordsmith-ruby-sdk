@@ -10,8 +10,8 @@ module Wordsmith
       parse_response(response)
     end
 
-    def post(uri, data, proofread)
-      response = connection.post(uri, {data: data, proofread: proofread}.to_json)
+    def post(uri, data, proofread = false)
+      response = connection.post(uri, { data: data, proofread: proofread }.to_json)
       parse_response(response)
     end
 
