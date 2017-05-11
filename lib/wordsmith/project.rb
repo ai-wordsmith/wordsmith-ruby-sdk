@@ -1,6 +1,6 @@
 module Wordsmith
   class Project
-    #include Wordsmith::Generator
+    include Wordsmith::Generator
     attr_reader :name, :slug, :schema, :templates
 
     def self.all
@@ -14,11 +14,19 @@ module Wordsmith
     end
 
     def generate_active(data, proofread: false)
+      generate(data, 'outputs', proofread)
       Wordsmith.client.post(path('outputs'), data, proofread)
     end
 
     def test_active(data, proofread: false)
-      Wordsmith.client.post(path('test'), data, proofread)
+      generate(data, 'test', proofread)
+      #Wordsmith.client.post(path('test'), data, proofread)
+    end
+
+    protected
+
+    def path(endpoint)
+      "projects/#{slug}/templates/active/#{endpoint}"
     end
 
     private
@@ -32,10 +40,6 @@ module Wordsmith
         Wordsmith::TemplateCollection.new(
           templates.map { |t| Wordsmith::Template.new(project: self, **t) }
         )
-    end
-
-    def path(endpoint)
-      "projects/#{slug}/templates/active/#{endpoint}"
     end
   end
 end

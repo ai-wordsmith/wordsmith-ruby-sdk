@@ -1,9 +1,9 @@
 module Wordsmith
   module Generator
 
-    # def generate(data, active = false, endpoint)
-    #   Wordsmith.client.post(path('outputs'), data, proofread)
-    # end
+    def generate(data, endpoint, proofread = false)
+      Wordsmith.client.post(path(endpoint), data, proofread)
+    end
 
     # protected
 

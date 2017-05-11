@@ -18,7 +18,7 @@ module Wordsmith
       Wordsmith.client.post(path('test'), data, proofread)
     end
 
-    private
+    protected
 
     def path(endpoint)
       "projects/#{project.slug}/templates/#{slug}/#{endpoint}"
