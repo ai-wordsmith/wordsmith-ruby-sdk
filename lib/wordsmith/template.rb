@@ -1,6 +1,7 @@
 module Wordsmith
   class Template
     attr_reader :name, :slug, :project
+    #include Wordsmith::Generator
 
     def initialize(name: nil, slug: nil, project: nil, **attributes)
       raise 'Missing required keyword arguments' unless [name, slug, project].all?

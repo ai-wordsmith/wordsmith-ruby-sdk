@@ -1,5 +1,6 @@
 module Wordsmith
   class Project
+    #include Wordsmith::Generator
     attr_reader :name, :slug, :schema, :templates
 
     def self.all
@@ -10,6 +11,14 @@ module Wordsmith
     def self.find(slug)
       project = all.find { |p| p.slug == slug }
       project || fail(%Q(Project not found with slug: "#{slug}"))
+    end
+
+    def generate_active(data, proofread: false)
+      Wordsmith.client.post(path('outputs'), data, proofread)
+    end
+
+    def test_active(data, proofread: false)
+      Wordsmith.client.post(path('test'), data, proofread)
     end
 
     private
@@ -23,6 +32,10 @@ module Wordsmith
         Wordsmith::TemplateCollection.new(
           templates.map { |t| Wordsmith::Template.new(project: self, **t) }
         )
+    end
+
+    def path(endpoint)
+      "projects/#{slug}/templates/active/#{endpoint}"
     end
   end
 end
