@@ -52,6 +52,8 @@ project.schema     #the data schema for the project
 project.templates  #a collection of templates for this project
 
 template = project.templates.find('template-slug')                             #fetch a template by slug
+template.test({a_data_point: 1, another_one: 'Tuesday'})                       #test your implementation
+ > nil # if no errors found, otherwise return RuntimeError
 template.generate({a_data_point: 1, another_one: 'Tuesday'}, proofread: false) #generate content
  > {content: 'Your content is here!'}
 ```
