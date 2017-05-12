@@ -1,16 +1,7 @@
 require 'test_helper'
 
 class ProjectTest < Minitest::Test
-  def setup
-    Wordsmith.configure do |config|
-      config.token = WORDSMITH_SDK_TEST_TOKEN
-    end
-  end
-
-  def teardown
-    Wordsmith.reset
-  end
-
+  include SetupAndTeardown
   def test_all_contains_project
     list = Wordsmith::Project.all
     assert list.find {|p| p.slug == 'test'}
@@ -37,7 +28,7 @@ class ProjectTest < Minitest::Test
   end
 
   def test_template_collection_exists
-    project = Wordsmith::Project.find 'test'
+    project = Wordsmith::Project.find('test')
     assert_instance_of Wordsmith::TemplateCollection, project.templates
   end
 end

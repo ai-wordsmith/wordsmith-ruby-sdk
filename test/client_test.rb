@@ -1,69 +1,56 @@
 require 'test_helper'
 
 class ClientTest < Minitest::Test
-#  def test_get
-#    skip
-#  end
-#
-#  def test_post
-#    skip
-#  end
-end
-
-class ClientTest::ParseResponseTest < Minitest::Test
-end
-
-class ClientTest::ConnectionTest < Minitest::Test
-  def setup
-    Wordsmith.configure do |config|
-      config.token = 'some_token'
-      config.url = 'http://www.some-url.com/api'
-    end
-    super
+  include SetupAndTeardown
+  def test_default_url
+    assert_equal 'https://api.automatedinsights.com/v1', connection.url_prefix.to_s
   end
 
-  def teardown
-    Wordsmith.reset
-    super
+  def test_authorization_header
+    assert_equal "Bearer #{WORDSMITH_SDK_TEST_TOKEN}", authorization
   end
 
-  def test_url_configuration_change
-    connection = Wordsmith.client.send :connection
-    assert_equal 'http://www.some-url.com/api',
-      connection.url_prefix.to_s
-
-    Wordsmith.configure do |config|
-      config.url = 'http://www.some-other-url.com/api'
-    end
-
-    connection = Wordsmith.client.send :connection
-    assert_equal 'http://www.some-other-url.com/api',
-      connection.url_prefix.to_s
-  end
-
-  def test_token_configuration_change
-    connection = Wordsmith.client.send :connection
-    assert_equal 'Bearer some_token',
-      connection.headers['Authorization']
-
+  def test_configuration_change
     Wordsmith.configure do |config|
       config.token = 'some_other_token'
+      config.version = '666'
     end
 
-    connection = Wordsmith.client.send :connection
-    assert_equal 'Bearer some_other_token',
-      connection.headers['Authorization']
+    assert_equal 'Bearer some_other_token', authorization
+    assert_equal "#{Wordsmith::Configuration::URL_HOST}/v666", connection.url_prefix.to_s
   end
 
   def test_content_type_header_is_json
-    connection = Wordsmith.client.send :connection
     content_type = connection.headers['Content-Type']
     assert_equal 'application/json', content_type
   end
 
-  def test_authorization_header
-    connection = Wordsmith.client.send :connection
-    authorization = connection.headers['Authorization']
-    assert_equal 'Bearer some_token', authorization
+  def test_authorization
+    Wordsmith.configure { |config| config.token = 'some_other_token' }
+
+    assert_equal 'API authorization error.', bad_request_message
+  end
+
+  def test_incorrect_url
+    Wordsmith.configure { |config| config.version = '1.99999' }
+
+    assert_equal 'Incorrect version set in wordsmith.rb', bad_request_message
+  end
+
+  private
+
+  def connection
+    Wordsmith.client.send :connection
+  end
+
+  def authorization
+    connection.headers['Authorization']
+  end
+
+  def bad_request_message
+    Wordsmith.client.get('projects')
+    raise('Did not catch error')
+  rescue RuntimeError => e
+    return e.message
   end
 end

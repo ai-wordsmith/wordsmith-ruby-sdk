@@ -39,10 +39,10 @@ Configure in initializer or as desired
 #config/initializers/wordsmith.rb
 Wordsmith.configure do |config|
   config.token = MY_API_TOKEN
-  config.url = 'https://api.automatedinsights.com/v1' #optional, this is the default value
+  config.version = '1' #optional, this is the default value
 end
 ```
-  
+
 ## Usage
 ```ruby
 projects = Wordsmith::Project.all                 #an array of projects your token can access
@@ -51,8 +51,8 @@ project = Wordsmith::Project.find('project-slug') #fetch a project by slug
 project.schema     #the data schema for the project
 project.templates  #a collection of templates for this project
 
-template = project.templates.find('template-slug')           #fetch a template by slug
-template.generate({a_data_point: 1, another_one: 'Tuesday'}) #generate content
+template = project.templates.find('template-slug')                             #fetch a template by slug
+template.generate({a_data_point: 1, another_one: 'Tuesday'}, proofread: false) #generate content
  > {content: 'Your content is here!'}
 ```
 

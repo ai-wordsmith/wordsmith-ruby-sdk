@@ -1,12 +1,18 @@
 module Wordsmith
   class Configuration
-    attr_accessor :token, :url, :user_agent
-    DEFAULT_URL = 'https://api.automatedinsights.com/v1'
+    attr_accessor :token, :user_agent, :version
+    DEFAULT_VERSION = '1'
     DEFAULT_USER_AGENT = "RubySDK/#{Wordsmith::VERSION}"
+    URL_HOST = 'https://api.automatedinsights.com'
+    DEFAULT_URL = "#{URL_HOST}/v#{DEFAULT_VERSION}"
 
     def initialize
-      @url = DEFAULT_URL
+      @version = DEFAULT_VERSION
       @user_agent = DEFAULT_USER_AGENT
+    end
+
+    def url
+      "#{URL_HOST}/v#{version}"
     end
   end
 

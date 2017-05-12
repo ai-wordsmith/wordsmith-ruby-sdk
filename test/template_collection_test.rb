@@ -1,15 +1,10 @@
 require 'test_helper'
 
 class TemplateCollectionTest < Minitest::Test
+  include SetupAndTeardown
   def setup
-    Wordsmith.configure do |config|
-      config.token = WORDSMITH_SDK_TEST_TOKEN
-    end
+    super
     @templates = Wordsmith::Project.find('test').templates
-  end
-
-  def teardown
-    Wordsmith.reset
   end
 
   def test_raises_if_not_found

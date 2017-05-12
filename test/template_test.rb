@@ -1,16 +1,11 @@
 require 'test_helper'
 
 class TemplateTest < Minitest::Test
+  include SetupAndTeardown
   def setup
-    Wordsmith.configure do |config|
-      config.token = WORDSMITH_SDK_TEST_TOKEN
-    end
+    super
     templates = Wordsmith::Project.find('test').templates
     @template = templates.find('test')
-  end
-
-  def teardown
-    Wordsmith.reset
   end
 
   def test_generate_invalid
@@ -23,7 +18,8 @@ class TemplateTest < Minitest::Test
 
   def test_generate
     #skip 'Fix encoding issues.'
-    text = @template.generate({a: 1, b: 1, c: 1})[:content]
-    assert_equal 'The value of A is 1.', text
+    output = @template.generate({a: 1, b: 1, c: 1}, proofread: true)
+    assert_equal 'The value of A is 1.', output[:content]
+    refute_nil output[:proofread_results]
   end
 end

@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class WordsmithTest < Minitest::Test
+  include SetupAndTeardown
   def test_configuration_is_configuration_object
     assert_instance_of Wordsmith::Configuration, Wordsmith.configuration
   end
@@ -11,17 +12,6 @@ class WordsmithTest < Minitest::Test
 end
 
 class WordsmithTest::ConfigureTest < Minitest::Test
-  def setup
-    Wordsmith.configure do |config|
-      config.token = 'some_token'
-      config.url = 'some_url'
-    end
-  end
-
-  def teardown
-    Wordsmith.reset
-  end
-
   def test_reset_configuration
     Wordsmith.reset
     config = Wordsmith.configuration
