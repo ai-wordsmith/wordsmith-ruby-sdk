@@ -10,7 +10,10 @@ module Wordsmith
     end
 
     def generate(data, proofread: false)
-      Wordsmith.client.post("projects/#{project.slug}/templates/#{slug}/outputs", data, proofread)
+      Wordsmith.client.post(
+        "projects/#{project.slug}/templates/#{slug}/outputs",
+        data,
+        proofread: proofread)
     end
   end
 end
