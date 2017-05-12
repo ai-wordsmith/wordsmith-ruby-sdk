@@ -23,7 +23,7 @@ class ProjectTest < Minitest::Test
 
   def test_schema
     project = Wordsmith::Project.find 'test'
-    expected = { a: 'Number', b: 'Number', c: 'Number' }
+    expected = {a: 'Number', b: 'Number', c: 'Number'}
     assert_equal expected, project.schema
   end
 
