@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class WordsmithTest < Minitest::Test
+  include SetupAndTeardown
   def test_configuration_is_configuration_object
     assert_instance_of Wordsmith::Configuration, Wordsmith.configuration
   end

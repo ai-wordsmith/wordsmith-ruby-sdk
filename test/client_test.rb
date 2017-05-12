@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class ClientTest < Minitest::Test
+  include SetupAndTeardown
   def test_default_url
     assert_equal 'https://api.automatedinsights.com/v1', connection.url_prefix.to_s
   end
@@ -48,7 +49,7 @@ class ClientTest < Minitest::Test
 
   def bad_request_message
     Wordsmith.client.get('projects')
-    fail 'Did not catch error'
+    raise('Did not catch error')
   rescue RuntimeError => e
     return e.message
   end
