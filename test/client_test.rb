@@ -49,7 +49,7 @@ class ClientTest < Minitest::Test
 
   def bad_request_message
     Wordsmith.client.get('projects')
-    fail 'Did not catch error'
+    raise('Did not catch error')
   rescue RuntimeError => e
     return e.message
   end
