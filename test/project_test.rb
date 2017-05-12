@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class ProjectTest < Minitest::Test
+  include SetupAndTeardown
   def test_all_contains_project
     list = Wordsmith::Project.all
     assert list.find {|p| p.slug == 'test'}

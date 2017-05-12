@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class ClientTest < Minitest::Test
+  include SetupAndTeardown
   def test_default_url
     assert_equal 'https://api.automatedinsights.com/v1', connection.url_prefix.to_s
   end

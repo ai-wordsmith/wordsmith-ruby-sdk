@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class TemplateTest < Minitest::Test
+  include SetupAndTeardown
   def setup
     super
     templates = Wordsmith::Project.find('test').templates
