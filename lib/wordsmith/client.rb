@@ -10,8 +10,8 @@ module Wordsmith
       parse_response(response)
     end
 
-    def post(uri, data, proofread = false)
-      response = connection.post(uri, { data: data, proofread: proofread }.to_json)
+    def post(uri, data, proofread:)
+      response = connection.post(uri, {data: data, proofread: proofread}.to_json)
       parse_response(response)
     end
 
@@ -50,11 +50,11 @@ module Wordsmith
       Hashie.symbolize_keys!(body)
       case response.status
       when 200, 201 then body[:data]
-      when 400 then fail %Q(Bad Request: "#{body[:errors]}")
-      when 401 then fail 'API authorization error.'
-      when 404 then fail 'Incorrect version set in wordsmith.rb'
-      when 429 then fail body[:error]
-      else fail 'API error'
+      when 400 then raise(%Q(Bad Request: "#{body[:errors]}"))
+      when 401 then raise('API authorization error.')
+      when 404 then raise('Incorrect version set in wordsmith.rb')
+      when 429 then raise(body[:error])
+      else raise('API error')
       end
     end
   end

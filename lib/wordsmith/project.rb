@@ -10,7 +10,7 @@ module Wordsmith
 
     def self.find(slug)
       project = all.find { |p| p.slug == slug }
-      project || fail(%Q(Project not found with slug: "#{slug}"))
+      project || raise(%Q(Project not found with slug: "#{slug}"))
     end
 
     def generate_active(data, proofread: false)

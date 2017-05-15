@@ -45,16 +45,21 @@ end
 
 ## Usage
 ```ruby
-projects = Wordsmith::Project.all                 #an array of projects your token can access
-project = Wordsmith::Project.find('project-slug') #fetch a project by slug
+projects = Wordsmith::Project.all                 # An array of projects your token can access
+project = Wordsmith::Project.find('project-slug') # Fetch a project by slug
 
-project.schema     #the data schema for the project
-project.templates  #a collection of templates for this project
+project.schema     # The data schema for the project
+project.templates  # A collection of templates for this project
 
-template = project.templates.find('template-slug')                             #fetch a template by slug
-template.test({a_data_point: 1, another_one: 'Tuesday'})                       #test your implementation
+# Fetch a template by slug.
+template = project.templates.find('template-slug')
+
+# Test your implementation without being charged for producing content.
+template.test({a_data_point: 1, another_one: 'Tuesday'})                       
  > nil # if no errors found, otherwise return RuntimeError
-template.generate({a_data_point: 1, another_one: 'Tuesday'}, proofread: false) #generate content
+
+# Generate your narrative. 
+template.generate({a_data_point: 1, another_one: 'Tuesday'}, proofread: false)
  > {content: 'Your content is here!'}
 ```
 

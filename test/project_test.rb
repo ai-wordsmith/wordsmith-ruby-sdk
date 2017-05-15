@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class ProjectTest < Minitest::Test
+  include SetupAndTeardown
   def test_all_contains_project
     list = Wordsmith::Project.all
     assert list.find {|p| p.slug == 'test'}
@@ -22,7 +23,7 @@ class ProjectTest < Minitest::Test
 
   def test_schema
     project = Wordsmith::Project.find 'test'
-    expected = { a: 'Number', b: 'Number', c: 'Number' }
+    expected = {a: 'Number', b: 'Number', c: 'Number'}
     assert_equal expected, project.schema
   end
 

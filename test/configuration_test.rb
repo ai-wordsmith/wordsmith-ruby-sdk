@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class ConfigurationTest < Minitest::Test
+  include SetupAndTeardown
   def test_token_default_value
     assert_nil Wordsmith::Configuration.new.token
   end
