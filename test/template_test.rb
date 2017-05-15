@@ -11,7 +11,7 @@ class TemplateTest < Minitest::Test
   def test_generate_invalid
     ['test', 'generate'].each do |endpoint|
       err = assert_raises RuntimeError do
-        @template.send(endpoint, {} )
+        @template.send(endpoint, {})
       end
 
       assert_match(/^Bad Request/, err.message)
