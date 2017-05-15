@@ -1,6 +1,5 @@
 module Wordsmith
   class Project
-    include Wordsmith::Generator
     attr_reader :name, :slug, :schema, :templates
 
     def self.all
@@ -14,20 +13,18 @@ module Wordsmith
     end
 
     def generate_active(data, proofread: false)
-      send_to_wordsmith(data, 'outputs', proofread: proofread)
+      Wordsmith.client.post(path('outputs'), data, proofread: proofread)
     end
 
     def test_active(data, proofread: false)
-      send_to_wordsmith(data, 'test', proofread: proofread)
+      Wordsmith.client.post(path('test'), data, proofread: proofread)
     end
 
-    protected
+    private
 
     def path(endpoint)
       "projects/#{slug}/templates/active/#{endpoint}"
     end
-
-    private
 
     def initialize(name: nil, slug: nil, schema: nil, templates: nil, **attributes)
       raise 'Missing required keyword arguments' unless [name, slug, templates].all?

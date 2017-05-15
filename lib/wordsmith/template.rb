@@ -1,6 +1,5 @@
 module Wordsmith
   class Template
-    include Wordsmith::Generator
     attr_reader :name, :slug, :project
 
     def initialize(name: nil, slug: nil, project: nil, **attributes)
@@ -11,14 +10,14 @@ module Wordsmith
     end
 
     def generate(data, proofread: false)
-      send_to_wordsmith(data, 'outputs', proofread: proofread)
+      Wordsmith.client.post(path('outputs'), data, proofread: proofread)
     end
 
     def test(data, proofread: false)
-      send_to_wordsmith(data, 'test', proofread: proofread)
+      Wordsmith.client.post(path('test'), data, proofread: proofread)
     end
 
-    protected
+    private
 
     def path(endpoint)
       "projects/#{project.slug}/templates/#{slug}/#{endpoint}"

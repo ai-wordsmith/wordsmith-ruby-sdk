@@ -1,4 +1,3 @@
-require_relative 'wordsmith/generator'
 require_relative 'wordsmith/version'
 require_relative 'wordsmith/project'
 require_relative 'wordsmith/template'
