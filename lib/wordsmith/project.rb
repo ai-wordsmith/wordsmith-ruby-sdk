@@ -14,13 +14,11 @@ module Wordsmith
     end
 
     def generate_active(data, proofread: false)
-      generate(data, 'outputs', proofread)
-      Wordsmith.client.post(path('outputs'), data, proofread)
+      send_to_wordsmith(data, 'outputs', proofread: proofread)
     end
 
     def test_active(data, proofread: false)
-      generate(data, 'test', proofread)
-      #Wordsmith.client.post(path('test'), data, proofread)
+      send_to_wordsmith(data, 'test', proofread: proofread)
     end
 
     protected

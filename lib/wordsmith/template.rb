@@ -1,7 +1,7 @@
 module Wordsmith
   class Template
+    include Wordsmith::Generator
     attr_reader :name, :slug, :project
-    #include Wordsmith::Generator
 
     def initialize(name: nil, slug: nil, project: nil, **attributes)
       raise 'Missing required keyword arguments' unless [name, slug, project].all?
@@ -11,11 +11,11 @@ module Wordsmith
     end
 
     def generate(data, proofread: false)
-      Wordsmith.client.post(path('outputs'), data, proofread)
+      send_to_wordsmith(data, 'outputs', proofread: proofread)
     end
 
     def test(data, proofread: false)
-      Wordsmith.client.post(path('test'), data, proofread)
+      send_to_wordsmith(data, 'test', proofread: proofread)
     end
 
     protected
