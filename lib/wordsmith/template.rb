@@ -10,11 +10,11 @@ module Wordsmith
     end
 
     def generate(data, proofread: false)
-      Wordsmith.client.post(path('outputs'), data, proofread)
+      Wordsmith.client.post(path('outputs'), data, proofread: proofread)
     end
 
     def test(data, proofread: false)
-      Wordsmith.client.post(path('test'), data, proofread)
+      Wordsmith.client.post(path('test'), data, proofread: proofread)
     end
 
     private
